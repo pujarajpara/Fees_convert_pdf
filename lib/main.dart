@@ -272,10 +272,7 @@ class _PdfGenerationPageState extends State<PdfGenerationPage> {
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Center(child: Text('Total Amount: $totalAmount')),
-            ),
+
           ],
         ),
       ),
@@ -651,14 +648,16 @@ Traning Program''',
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 20),
-                child: FloatingActionButton(
-                  backgroundColor: Colors.grey,
-                  onPressed: () {
-                    _downloadAndOpenPdf(context);
-                  },
-                  child: const Icon(
-                    Icons.download,
+                padding: const EdgeInsets.all(20),
+                child: Center(
+                  child: FloatingActionButton(
+                    backgroundColor: Colors.black,
+                    onPressed: () {
+                      _downloadAndOpenPdf(context);
+                    },
+                    child: const Icon(
+                      Icons.download,
+                    ),
                   ),
                 ),
               ),
