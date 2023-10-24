@@ -1,5 +1,3 @@
-
-
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
@@ -8,6 +6,7 @@ import 'package:pdf/widgets.dart' as pw;
 
 import 'display.dart';
 import 'main.dart';
+
 class PdfGenerationPage extends StatefulWidget {
   const PdfGenerationPage({super.key});
 
@@ -241,7 +240,6 @@ class _PdfGenerationPageState extends State<PdfGenerationPage> {
                 ),
               ],
             ),
-
           ],
         ),
       ),
