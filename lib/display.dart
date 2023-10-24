@@ -56,59 +56,53 @@ class _DataDisplayPageState extends State<DataDisplayPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20, left: 20),
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          'assets/fib.png',
-                          width: 100,
-                        ),
-                        Container(
-                          height: 2,
-                          width: 150,
-                          margin: const EdgeInsets.only(
-                            left: 15,
-                          ),
-                          color: Colors.black,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 15),
-                          child: Text(
-                            'Flutter Training Academy',
-                            style: TextStyle(
-                              fontSize: 0.04 * screenWidth,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        )
-                      ],
+              Padding(
+                padding: const EdgeInsets.only(top: 20, left: 20),
+                child: Column(
+                  children: [
+                    Image.asset(
+                      'assets/fib.png',
+                      width: 100,
                     ),
-                  ),
-                ],
+                    Container(
+                      height: 2,
+                      width: 150,
+                      margin: const EdgeInsets.only(
+                        left: 15,
+                      ),
+                      color: Colors.black,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15),
+                      child: Text(
+                        'Flutter Training Academy',
+                        style: TextStyle(
+                          fontSize: 0.04 * screenWidth,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(16),
                 child: Row(
                   children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Receipt Number: ${widget.receiptNumber}',
-                              style: const TextStyle(fontSize: 15),
-                            ),
-                            Text(
-                              'Date: ${widget.date}',
-                              style: const TextStyle(fontSize: 15),
-                            ),
-                          ],
-                        ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Receipt Number: ${widget.receiptNumber}',
+                            style: const TextStyle(fontSize: 15),
+                          ),
+                          Text(
+                            'Date: ${widget.date}',
+                            style: const TextStyle(fontSize: 15),
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(
@@ -140,38 +134,29 @@ class _DataDisplayPageState extends State<DataDisplayPage> {
                   ],
                 ),
               ),
-              Row(
-                children: [
-                  Container(
-                    color: Colors.black,
-                    height: 50,
-                    width: screenWidth * 1,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 30),
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Text(
-                              'Description',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(right: 55),
-                          child: Text(
-                            'Amt',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ],
+              Container(
+                color: Colors.black,
+                height: 50,
+                width: screenWidth * 1,
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 30),
+                      child: Text(
+                        'Description',
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: EdgeInsets.only(right: 55),
+                      child: Text(
+                        'Amt',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 20, left: 30),
@@ -260,7 +245,7 @@ Traning Program''',
                     Text(
                       'Fibtion',
                       style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                     ),
                   ],
                 ),
@@ -310,18 +295,13 @@ Traning Program''',
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(50),
-                child: Center(
-                  child: FloatingActionButton(
-                    backgroundColor: Colors.black,
-                    onPressed: () {
-                      _downloadAndOpenPdf(context);
-                    },
-                    child: const Icon(
-                      Icons.download,
-                    ),
-                  ),
+              FloatingActionButton(
+                backgroundColor: Colors.grey,
+                onPressed: () {
+                  _downloadAndOpenPdf(context);
+                },
+                child: const Icon(
+                  Icons.download,
                 ),
               ),
             ],
@@ -338,9 +318,9 @@ Traning Program''',
     );
 
     final Uint8List imageAsset =
-    (await rootBundle.load('assets/fib.png')).buffer.asUint8List();
+        (await rootBundle.load('assets/fib.png')).buffer.asUint8List();
     final Uint8List signatureAsset =
-    (await rootBundle.load('assets/signature2.png')).buffer.asUint8List();
+        (await rootBundle.load('assets/signature2.png')).buffer.asUint8List();
     final phoneIconData = Uint8List.fromList(
         (await rootBundle.load('assets/phone_icon.png')).buffer.asUint8List());
     final mailIconData = Uint8List.fromList(
@@ -390,43 +370,43 @@ Traning Program''',
                 children: [
                   pw.Expanded(
                       child: pw.Padding(
-                        padding: const pw.EdgeInsets.only(left: 20),
-                        child: pw.Column(
-                          crossAxisAlignment: pw.CrossAxisAlignment.start,
+                    padding: const pw.EdgeInsets.only(left: 20),
+                    child: pw.Column(
+                      crossAxisAlignment: pw.CrossAxisAlignment.start,
+                      children: [
+                        pw.Row(
                           children: [
-                            pw.Row(
-                              children: [
-                                pw.Text(
-                                  'Receipt Number:',
-                                  style: pw.TextStyle(
-                                      fontWeight: pw.FontWeight.bold, fontSize: 15),
-                                ),
-                                pw.SizedBox(width: 5),
-                                // Add some spacing between key and value
-                                pw.Text(
-                                  widget.receiptNumber,
-                                  style: const pw.TextStyle(fontSize: 15),
-                                ),
-                              ],
+                            pw.Text(
+                              'Receipt Number:',
+                              style: pw.TextStyle(
+                                  fontWeight: pw.FontWeight.bold, fontSize: 15),
                             ),
-                            pw.Row(
-                              children: [
-                                pw.Text(
-                                  'Date:',
-                                  style: pw.TextStyle(
-                                      fontWeight: pw.FontWeight.bold, fontSize: 15),
-                                ),
-                                pw.SizedBox(width: 5),
-                                // Add some spacing between key and value
-                                pw.Text(
-                                  widget.date,
-                                  style: const pw.TextStyle(fontSize: 15),
-                                ),
-                              ],
-                            )
+                            pw.SizedBox(width: 5),
+                            // Add some spacing between key and value
+                            pw.Text(
+                              widget.receiptNumber,
+                              style: const pw.TextStyle(fontSize: 15),
+                            ),
                           ],
                         ),
-                      )),
+                        pw.Row(
+                          children: [
+                            pw.Text(
+                              'Date:',
+                              style: pw.TextStyle(
+                                  fontWeight: pw.FontWeight.bold, fontSize: 15),
+                            ),
+                            pw.SizedBox(width: 5),
+                            // Add some spacing between key and value
+                            pw.Text(
+                              widget.date,
+                              style: const pw.TextStyle(fontSize: 15),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  )),
                   pw.SizedBox(width: 20),
                   pw.Expanded(
                     child: pw.Column(
@@ -441,7 +421,7 @@ Traning Program''',
                             ),
                             pw.SizedBox(
                                 width:
-                                5), // Add some spacing between key and value
+                                    5), // Add some spacing between key and value
                             pw.Text(
                               widget.studentName,
                               style: const pw.TextStyle(fontSize: 15),
@@ -457,7 +437,7 @@ Traning Program''',
                             ),
                             pw.SizedBox(
                                 width:
-                                5), // Add some spacing between key and value
+                                    5), // Add some spacing between key and value
                             pw.Text(
                               widget.phone,
                               style: const pw.TextStyle(fontSize: 15),
@@ -473,7 +453,7 @@ Traning Program''',
                             ),
                             pw.SizedBox(
                                 width:
-                                5), // Add some spacing between key and value
+                                    5), // Add some spacing between key and value
                             pw.Text(
                               widget.email,
                               style: const pw.TextStyle(fontSize: 15),
@@ -489,7 +469,7 @@ Traning Program''',
                             ),
                             pw.SizedBox(
                                 width:
-                                5), // Add some spacing between key and value
+                                    5), // Add some spacing between key and value
                             pw.Text(
                               widget.address,
                               style: const pw.TextStyle(fontSize: 15),
