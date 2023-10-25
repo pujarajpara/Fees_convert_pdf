@@ -4,7 +4,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:intl/intl.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
@@ -243,7 +242,7 @@ Traning Program''',
                     Text('88 66 44 00 25'),
                     Spacer(),
                     Text(
-                      'Fibtion',
+                      'Fiction',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                     ),
@@ -295,7 +294,6 @@ Traning Program''',
                   ],
                 ),
               ),
-
               Padding(
                 padding: const EdgeInsets.only(top: 50, left: 250),
                 child: InkWell(
@@ -332,29 +330,7 @@ Traning Program''',
                     ),
                   ),
                 ),
-
-                // child: ElevatedButton(
-                //     onPressed: () {},
-                //     style: ElevatedButton.styleFrom(
-                //       primary: Colors.blueGrey,
-                //       shape: RoundedRectangleBorder(
-                //           borderRadius: BorderRadius.circular(20)),
-                //       elevation: 4.0,
-                //     ),
-                //
-                //     child: const Text(' Download',style: TextStyle(fontWeight: FontWeight.bold),)),
               ),
-              //   child:  Center(
-              //       child: FloatingActionButton(
-              //         backgroundColor: Colors.grey,
-              //         onPressed: () {
-              //           _downloadAndOpenPdf(context);
-              //         },
-              //         child: const Icon(
-              //           Icons.download,
-              //         ),
-              //       ),
-              //     ),),
             ],
           ),
         ),
@@ -711,7 +687,7 @@ Traning Program''',
     );
 
     final tempDir = await getTemporaryDirectory();
-    final pdfPath = '${tempDir.path}/prodemo2.pdf';
+    final pdfPath = '${tempDir.path}/pdf.pdf';
     final file = File(pdfPath);
     await file.writeAsBytes(await pdf.save());
 
