@@ -5,7 +5,6 @@ import 'display.dart';
 
 import 'package:pdf/widgets.dart' as pw;
 
-
 class PdfGenerationPage extends StatefulWidget {
   const PdfGenerationPage({super.key});
 
@@ -35,140 +34,138 @@ class _PdfGenerationPageState extends State<PdfGenerationPage> {
         child: ListView(
           padding: const EdgeInsets.all(16.0),
           children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TextFormField(
-                        controller: receiptNoController,
-                        decoration: InputDecoration(
-                          labelText: 'Receipt number',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          labelStyle: const TextStyle(),
-                        ),
-                        keyboardType: TextInputType.text,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter the receipt number';
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(height: 20),
-                      buildDateField(dateController),
-                    ],
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextFormField(
+                  controller: receiptNoController,
+                  decoration: InputDecoration(
+                    labelText: 'Receipt number',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    labelStyle: const TextStyle(),
                   ),
+                  keyboardType: TextInputType.text,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter the receipt number';
+                    }
+                    return null;
+                  },
                 ),
-                const SizedBox(width: 20,height: 20,),
-                Expanded(
-                  flex: 2,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TextFormField(
-                        controller: studentNameController,
-                        decoration: InputDecoration(
-                          labelText: 'Student Name',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          labelStyle: const TextStyle(),
-                        ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter the student name';
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(height: 20,),
-                      TextFormField(
-                        controller: phoneController,
-                        decoration: InputDecoration(
-                          labelText: 'Phone Number',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          labelStyle: const TextStyle(),
-                        ),
-                        keyboardType: TextInputType.phone,
-                        maxLength: 10,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter the phone number';
-                          }
-                          if (value.length != 10) {
-                            return 'Phone number should have 10 digits';
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(height: 20),
-                      TextFormField(
-                        controller: emailController,
-                        decoration: InputDecoration(
-                          labelText: 'Email',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          labelStyle: const TextStyle(),
-                        ),
-                        keyboardType: TextInputType.emailAddress,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter an email address';
-                          }
-                          if (!isValidEmail(value)) {
-                            return 'Please enter a valid email address';
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(height: 20),
-                      TextFormField(
-                        controller: addressController,
-                        decoration: InputDecoration(
-                          labelText: 'Address',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          labelStyle: const TextStyle(),
-                        ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter the address';
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(height: 20),
-                      TextFormField(
-                        controller: amountController,
-                        decoration: InputDecoration(
-                          labelText: 'Amount',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          labelStyle: const TextStyle(),
-                        ),
-                        keyboardType: TextInputType.number,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter the amount';
-                          }
-                          if (!isNumeric(value)) {
-                            return 'Please enter a valid numeric amount';
-                          }
-                          return null;
-                        },
-                      ),
-                    ],
+                const SizedBox(height: 20),
+                buildDateField(dateController),
+              ],
+            ),
+            const SizedBox(
+              width: 20,
+              height: 20,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextFormField(
+                  controller: studentNameController,
+                  decoration: InputDecoration(
+                    labelText: 'Student Name',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    labelStyle: const TextStyle(),
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter the student name';
+                    }
+                    return null;
+                  },
                 ),
-
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  controller: phoneController,
+                  decoration: InputDecoration(
+                    labelText: 'Phone Number',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    labelStyle: const TextStyle(),
+                  ),
+                  keyboardType: TextInputType.phone,
+                  maxLength: 10,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter the phone number';
+                    }
+                    if (value.length != 10) {
+                      return 'Phone number should have 10 digits';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 20),
+                TextFormField(
+                  controller: emailController,
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    labelStyle: const TextStyle(),
+                  ),
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter an email address';
+                    }
+                    if (!isValidEmail(value)) {
+                      return 'Please enter a valid email address';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 20),
+                TextFormField(
+                  controller: addressController,
+                  decoration: InputDecoration(
+                    labelText: 'Address',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    labelStyle: const TextStyle(),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter the address';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 20),
+                TextFormField(
+                  controller: amountController,
+                  decoration: InputDecoration(
+                    labelText: 'Amount',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    labelStyle: const TextStyle(),
+                  ),
+                  keyboardType: TextInputType.number,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter the amount';
+                    }
+                    if (!isNumeric(value)) {
+                      return 'Please enter a valid numeric amount';
+                    }
+                    return null;
+                  },
+                ),
+              ],
+            ),
             const SizedBox(height: 25),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -192,7 +189,6 @@ class _PdfGenerationPageState extends State<PdfGenerationPage> {
                         totalAmount += amount;
                       });
 
-
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -204,16 +200,19 @@ class _PdfGenerationPageState extends State<PdfGenerationPage> {
                             email: data['Email'] ?? '',
                             address: data['Address'] ?? '',
                             amount: data['Amount'] ?? '',
-
                           ),
                         ),
                       );
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black, backgroundColor: Colors.blueGrey,
+                    foregroundColor: Colors.black,
+                    backgroundColor: Colors.blueGrey,
                   ),
-                  child: const Text('Add Data',style: TextStyle(color: Colors.white),),
+                  child: const Text(
+                    'Add Data',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -229,13 +228,16 @@ class _PdfGenerationPageState extends State<PdfGenerationPage> {
                     });
                   },
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black, backgroundColor: Colors.blueGrey,
+                    foregroundColor: Colors.black,
+                    backgroundColor: Colors.blueGrey,
                   ),
-                  child: const Text('Clear Data',style: TextStyle(color: Colors.white),),
+                  child: const Text(
+                    'Clear Data',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ],
             ),
-
           ],
         ),
       ),
@@ -309,4 +311,3 @@ class _PdfGenerationPageState extends State<PdfGenerationPage> {
     return double.tryParse(value) != null;
   }
 }
-

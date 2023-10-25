@@ -105,7 +105,7 @@ SPEC CHECKSUMS:
   SDWebImage: 96e0c18ef14010b7485210e92fac888587ebb958
   SwiftyGif: 93a1cc87bf3a51916001cf8f3d63835fb64c819f
   syncfusion_flutter_pdfviewer: bb9998884b864cfedf72628df3503bdf57e397c0
-  url_launcher_ios: 08a3dfac5fb39e8759aeb0abbd5d9480f30fc8b4
+  url_launcher_ios: 68d46cc9766d0c41dbdc884310529557e3cd7a86
 
 PODFILE CHECKSUM: e020d736cc4ef4292c5143a49fc79d877d8c37ed
 

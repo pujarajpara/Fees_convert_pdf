@@ -295,15 +295,66 @@ Traning Program''',
                   ],
                 ),
               ),
-              FloatingActionButton(
-                backgroundColor: Colors.grey,
-                onPressed: () {
-                  _downloadAndOpenPdf(context);
-                },
-                child: const Icon(
-                  Icons.download,
+
+              Padding(
+                padding: const EdgeInsets.only(top: 50, left: 250),
+                child: InkWell(
+                  onTap: () {
+                    _downloadAndOpenPdf(context);
+                  },
+                  child: Container(
+                    height: 45,
+                    margin: const EdgeInsets.only(right: 60, left: 20),
+                    alignment: Alignment.centerLeft,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: Colors.blueGrey),
+                    //   color: Colors.blueGrey,
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.picture_as_pdf,
+                          color: Colors.white,
+                          size: 18,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          'Download',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
+
+                // child: ElevatedButton(
+                //     onPressed: () {},
+                //     style: ElevatedButton.styleFrom(
+                //       primary: Colors.blueGrey,
+                //       shape: RoundedRectangleBorder(
+                //           borderRadius: BorderRadius.circular(20)),
+                //       elevation: 4.0,
+                //     ),
+                //
+                //     child: const Text(' Download',style: TextStyle(fontWeight: FontWeight.bold),)),
               ),
+              //   child:  Center(
+              //       child: FloatingActionButton(
+              //         backgroundColor: Colors.grey,
+              //         onPressed: () {
+              //           _downloadAndOpenPdf(context);
+              //         },
+              //         child: const Icon(
+              //           Icons.download,
+              //         ),
+              //       ),
+              //     ),),
             ],
           ),
         ),
@@ -611,7 +662,7 @@ Traning Program''',
                     width: 12,
                   ),
                   pw.SizedBox(width: 6),
-                  pw.Text('fibtion@gmail.com'),
+                  pw.Text('''fibtion@gmail.com'''),
                   pw.Spacer(),
                   pw.Padding(
                     padding: const pw.EdgeInsets.only(right: 30, top: 15),
@@ -632,7 +683,7 @@ Traning Program''',
               ),
             ),
             pw.Padding(
-              padding: const pw.EdgeInsets.only(left: 25, right: 30),
+              padding: const pw.EdgeInsets.only(left: 27, right: 30),
               child: pw.Row(
                 crossAxisAlignment: pw.CrossAxisAlignment.start,
                 children: [
@@ -641,10 +692,10 @@ Traning Program''',
                       imageAsset1,
                     ),
                     height: 17,
-                    width: 17,
+                    width: 18,
                   ),
                   pw.Text(
-                      ''' 112-113, Times Shoppers,\nSarthana Jakatnaka, Surat'''),
+                      ' 112-113, Times Shoppers,\n Sarthana Jakatnaka, Surat'),
                   pw.Spacer(),
                   pw.Padding(
                     padding: const pw.EdgeInsets.only(top: 15),
