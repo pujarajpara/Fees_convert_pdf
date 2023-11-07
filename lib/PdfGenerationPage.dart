@@ -1,5 +1,8 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:signature/signature.dart';
 
 import 'display.dart';
 
@@ -22,6 +25,11 @@ class _PdfGenerationPageState extends State<PdfGenerationPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController amountController = TextEditingController();
+  SignatureController controller = SignatureController(
+      penStrokeWidth: 3,
+      penColor: Colors.red,
+      exportBackgroundColor: Colors.yellow);
+  //Uint8List? exportedImage;
   final pdf = pw.Document();
 
   int totalAmount = 0;
@@ -44,7 +52,7 @@ class _PdfGenerationPageState extends State<PdfGenerationPage> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    labelStyle: const TextStyle(),
+                    labelStyle: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   keyboardType: TextInputType.text,
                   validator: (value) {
@@ -72,7 +80,7 @@ class _PdfGenerationPageState extends State<PdfGenerationPage> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    labelStyle: const TextStyle(),
+                    labelStyle: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -91,7 +99,7 @@ class _PdfGenerationPageState extends State<PdfGenerationPage> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    labelStyle: const TextStyle(),
+                    labelStyle: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   keyboardType: TextInputType.phone,
                   maxLength: 10,
@@ -113,7 +121,7 @@ class _PdfGenerationPageState extends State<PdfGenerationPage> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    labelStyle: const TextStyle(),
+                    labelStyle: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
@@ -134,8 +142,9 @@ class _PdfGenerationPageState extends State<PdfGenerationPage> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    labelStyle: const TextStyle(),
+                    labelStyle: const TextStyle(fontWeight: FontWeight.bold),
                   ),
+                  maxLines: 1,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter the address';
@@ -145,13 +154,14 @@ class _PdfGenerationPageState extends State<PdfGenerationPage> {
                 ),
                 const SizedBox(height: 20),
                 TextFormField(
+                  maxLines: 1,
                   controller: amountController,
                   decoration: InputDecoration(
                     labelText: 'Amount',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    labelStyle: const TextStyle(),
+                    labelStyle: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   keyboardType: TextInputType.number,
                   validator: (value) {
@@ -163,6 +173,12 @@ class _PdfGenerationPageState extends State<PdfGenerationPage> {
                     }
                     return null;
                   },
+                ),
+                const SizedBox(height: 20),
+                Signature(
+                  controller: SignatureController(
+
+                  )
                 ),
               ],
             ),
@@ -184,6 +200,7 @@ class _PdfGenerationPageState extends State<PdfGenerationPage> {
                       };
 
                       int amount = int.tryParse(amountController.text) ?? 0;
+                     // final signatureData = await _captureSignature();
 
                       setState(() {
                         totalAmount += amount;
@@ -200,6 +217,8 @@ class _PdfGenerationPageState extends State<PdfGenerationPage> {
                             email: data['Email'] ?? '',
                             address: data['Address'] ?? '',
                             amount: data['Amount'] ?? '',
+
+
                           ),
                         ),
                       );
@@ -211,7 +230,8 @@ class _PdfGenerationPageState extends State<PdfGenerationPage> {
                   ),
                   child: const Text(
                     'Add Data',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                        color: Colors.white, fontFamily: 'font/bold.ttf'),
                   ),
                 ),
                 ElevatedButton(
@@ -238,6 +258,51 @@ class _PdfGenerationPageState extends State<PdfGenerationPage> {
                 ),
               ],
             ),
+            // Signature(
+            //   controller: controller,
+            //   width: 180,
+            //   height: 100,
+            // ),
+            // const SizedBox(
+            //   height: 20,
+            // ),
+            // Row(
+            //   mainAxisSize: MainAxisSize.min,
+            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //   children: [
+            //     Padding(
+            //       padding: const EdgeInsets.only(left: 80, top: 10),
+            //       child: ElevatedButton(
+            //         onPressed: () async{
+            //            exportedImage = await controller.toPngBytes();
+            //            setState(() {
+            //
+            //            });
+            //         },
+            //         style: ButtonStyle(
+            //           backgroundColor:
+            //               MaterialStateProperty.all(Colors.blueGrey),
+            //         ),
+            //         child: const Text("Save"),
+            //       ),
+            //     ),
+            //     Padding(
+            //       padding: const EdgeInsets.only(right: 70, top: 10),
+            //       child: ElevatedButton(
+            //         onPressed: () {
+            //           controller.clear();
+            //         },
+            //         style: ButtonStyle(
+            //           backgroundColor:
+            //               MaterialStateProperty.all(Colors.blueGrey),
+            //         ),
+            //         child: const Text("Clear"),
+            //       ),
+            //     ),
+            //   ],
+            // ),
+            // SizedBox(height: 20,),
+           // if(exportedImage!=null)Image.memory(exportedImage!)
           ],
         ),
       ),
@@ -278,6 +343,9 @@ class _PdfGenerationPageState extends State<PdfGenerationPage> {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
         ),
+        labelStyle:
+            TextStyle(fontWeight: FontWeight.bold), // Make the label text bold
+
         suffixIcon: const Icon(Icons.calendar_today),
       ),
       validator: (value) {

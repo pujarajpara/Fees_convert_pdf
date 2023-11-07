@@ -48,7 +48,6 @@ class _DataDisplayPageState extends State<DataDisplayPage> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
@@ -85,53 +84,113 @@ class _DataDisplayPageState extends State<DataDisplayPage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.only(left: 16, right: 16, top: 20),
                 child: Row(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20),
+                    Expanded(
+                        child: Padding(
+                      padding: const EdgeInsets.only(left: 20, top: 50),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Receipt Number: ${widget.receiptNumber}',
-                            style: const TextStyle(fontSize: 15),
+                          Row(
+                            children: [
+                              const Text(
+                                'Receipt:',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(width: 5),
+                              Text(
+                                widget.receiptNumber,
+                              ),
+                            ],
                           ),
-                          Text(
-                            'Date: ${widget.date}',
-                            style: const TextStyle(fontSize: 15),
-                          ),
+                          Row(
+                            children: [
+                              const Text(
+                                'Date:',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(width: 5),
+                              Text(
+                                widget.date,
+                              ),
+                            ],
+                          )
                         ],
                       ),
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
+                    )),
+                    const SizedBox(width: 20),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Student Name: ${widget.studentName}',
-                            style: const TextStyle(fontSize: 15),
+                          Row(
+                            children: [
+                              const Text(
+                                'Name:',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                                maxLines: 2,
+                              ),
+                              const SizedBox(width: 5),
+                              Flexible(
+                                child: Text(
+                                  widget.studentName,
+                                  maxLines: 2,
+                                ),
+                              ),
+                            ],
                           ),
-                          Text(
-                            'Phone: ${widget.phone}',
-                            style: const TextStyle(fontSize: 15),
+                          Row(
+                            children: [
+                              const Text(
+                                'Phone:',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(width: 5),
+                              Text(
+                                widget.phone,
+                              ),
+                            ],
                           ),
-                          Text(
-                            'Email: ${widget.email}',
-                            style: const TextStyle(fontSize: 15),
+                          Row(
+                            children: [
+                              const Text(
+                                'Email:',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                                maxLines: 2,
+                              ),
+                              const SizedBox(width: 5),
+                              Text(
+                                widget.email,
+                                maxLines: 2,
+                              ),
+                            ],
                           ),
-                          Text(
-                            'Address: ${widget.address}',
-                            style: const TextStyle(fontSize: 15),
-                          ),
+                          Row(
+                            children: [
+                              const Text(
+                                'Add:',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                                maxLines: 3,
+                              ),
+                              const SizedBox(width: 5),
+                              Flexible(
+                                child: Text(
+                                  widget.address,
+                                  maxLines: 3,
+                                ),
+                              ),
+                            ],
+                          )
                         ],
                       ),
                     ),
                   ],
                 ),
+              ),
+              const SizedBox(
+                height: 20,
               ),
               Container(
                 color: Colors.black,
@@ -160,23 +219,24 @@ class _DataDisplayPageState extends State<DataDisplayPage> {
               Padding(
                 padding: const EdgeInsets.only(right: 20, left: 30),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(top: 20),
-                          child: Text(
-                            '''Flutter App Devlopment
-Traning Program''',
-                            style: TextStyle(color: Colors.black),
+                    const Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(top: 20),
+                            child: Text(
+                              '''Flutter App Devlopment\nTraing Program''',
+                              style: TextStyle(color: Colors.black),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 60),
+                      padding: const EdgeInsets.only(left: 100),
                       child: Column(
                         children: [
                           Container(
@@ -187,15 +247,18 @@ Traning Program''',
                         ],
                       ),
                     ),
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 35, top: 20),
-                          child: Text(
-                            widget.amount,
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 30, top: 20, right: 20),
+                            child: Text(
+                              widget.amount,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -212,20 +275,35 @@ Traning Program''',
                 indent: 180,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Padding(
-                    padding: EdgeInsets.only(left: 210),
+                    padding: EdgeInsets.only(
+                      left: 190,
+                    ),
                     child: Text(
                       'Total',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 70),
-                    child: Text(
-                      widget.amount,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                  const SizedBox(
+                    width: 80,
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right: 20),
+                          child: Text(
+                            widget.amount,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'font'),
+
+                            // Handles text overflow
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -242,7 +320,7 @@ Traning Program''',
                     Text('88 66 44 00 25'),
                     Spacer(),
                     Text(
-                      'Fiction',
+                      'Fibtion',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                     ),
@@ -275,20 +353,25 @@ Traning Program''',
                   ],
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(left: 25, right: 30),
+              Padding(
+                padding: const EdgeInsets.only(left: 25, right: 30),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Icon(Icons.location_on, size: 18),
-                    Text('''112-113,Times Shoppers,
+                    const Icon(Icons.location_on, size: 18),
+                    const Text('''112-113,Times Shoppers,
  Sarthana Jakatnaka,Surat'''),
-                    Spacer(),
+                    const Spacer(),
                     Padding(
-                      padding: EdgeInsets.only(top: 10),
-                      child: Text(
-                        '(Ruchit Mavani)',
-                        style: TextStyle(fontSize: 15),
+                      padding: const EdgeInsets.only(top: 10),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text(
+                          '(Ruchit Mavani)',
+                          style: TextStyle(fontSize: 15),
+                        ),
                       ),
                     ),
                   ],
@@ -307,7 +390,6 @@ Traning Program''',
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         color: Colors.blueGrey),
-                    //   color: Colors.blueGrey,
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -323,6 +405,7 @@ Traning Program''',
                           'Download',
                           style: TextStyle(
                               color: Colors.white,
+                              fontFamily: 'bold',
                               fontWeight: FontWeight.bold,
                               fontSize: 14),
                         )
@@ -354,6 +437,14 @@ Traning Program''',
         (await rootBundle.load('assets/mail_icon.png')).buffer.asUint8List());
     final imageAsset1 = Uint8List.fromList(
         (await rootBundle.load('assets/map_icon.png')).buffer.asUint8List());
+
+    final font = await rootBundle.load("assets/font/bold.ttf");
+    final ttf = pw.Font.ttf(font);
+    final font1 = await rootBundle.load("assets/font/Regular.ttf");
+    final ttf1 = pw.Font.ttf(font1);
+
+    final font2 = await rootBundle.load("assets/font/Regular.ttf");
+    final ttf2 = pw.Font.ttf(font2);
     pdf.addPage(
       pw.MultiPage(
         margin: pw.EdgeInsets.zero,
@@ -361,34 +452,32 @@ Traning Program''',
         build: (pw.Context context) {
           final screenWidth = pageTheme.pageFormat.availableWidth;
           return [
-            pw.Row(
-              children: [
-                pw.Padding(
-                  padding: const pw.EdgeInsets.only(top: 20, left: 20),
-                  child: pw.Column(
-                    children: [
-                      pw.Image(pw.MemoryImage(imageAsset),
-                          width: 100, height: 100),
-                      pw.Container(
-                        height: 2,
-                        width: 150,
-                        margin: const pw.EdgeInsets.only(left: 15),
-                        color: PdfColors.black,
-                      ),
-                      pw.Padding(
-                        padding: const pw.EdgeInsets.only(left: 20),
-                        child: pw.Text(
-                          'Flutter Training Academy',
-                          style: pw.TextStyle(
-                            fontSize: 0.03 * screenWidth,
-                            fontWeight: pw.FontWeight.bold,
-                          ),
-                        ),
-                      )
-                    ],
+            pw.Padding(
+              padding: const pw.EdgeInsets.only(top: 20, left: 20),
+              child: pw.Column(
+                children: [
+                  pw.Image(
+                    pw.MemoryImage(imageAsset),
+                    width: 100,
                   ),
-                )
-              ],
+                  pw.Container(
+                    height: 2,
+                    width: 150,
+                    margin: const pw.EdgeInsets.only(left: 15),
+                    color: PdfColors.black,
+                  ),
+                  pw.Padding(
+                    padding: const pw.EdgeInsets.only(left: 20),
+                    child: pw.Text(
+                      'Flutter Training Academy',
+                      style: pw.TextStyle(
+                        fontSize: 0.03 * screenWidth,
+                        fontWeight: pw.FontWeight.bold,
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
             pw.SizedBox(height: 20),
             pw.Padding(
@@ -397,22 +486,26 @@ Traning Program''',
                 children: [
                   pw.Expanded(
                       child: pw.Padding(
-                    padding: const pw.EdgeInsets.only(left: 20),
+                    padding: const pw.EdgeInsets.only(left: 20, top: 50),
                     child: pw.Column(
                       crossAxisAlignment: pw.CrossAxisAlignment.start,
                       children: [
                         pw.Row(
                           children: [
                             pw.Text(
-                              'Receipt Number:',
+                              'Receipt:',
                               style: pw.TextStyle(
-                                  fontWeight: pw.FontWeight.bold, fontSize: 15),
+                                font: ttf,
+                                fontSize: 15,
+                              ),
                             ),
                             pw.SizedBox(width: 5),
-                            // Add some spacing between key and value
                             pw.Text(
                               widget.receiptNumber,
-                              style: const pw.TextStyle(fontSize: 15),
+                              style: pw.TextStyle(
+                                font: ttf,
+                                fontSize: 15,
+                              ),
                             ),
                           ],
                         ),
@@ -420,14 +513,15 @@ Traning Program''',
                           children: [
                             pw.Text(
                               'Date:',
-                              style: pw.TextStyle(
-                                  fontWeight: pw.FontWeight.bold, fontSize: 15),
+                              style: pw.TextStyle(font: ttf, fontSize: 15),
                             ),
                             pw.SizedBox(width: 5),
-                            // Add some spacing between key and value
                             pw.Text(
                               widget.date,
-                              style: const pw.TextStyle(fontSize: 15),
+                              style: pw.TextStyle(
+                                fontSize: 15,
+                                font: ttf,
+                              ),
                             ),
                           ],
                         )
@@ -442,32 +536,30 @@ Traning Program''',
                         pw.Row(
                           children: [
                             pw.Text(
-                              'Student Name:',
-                              style: pw.TextStyle(
-                                  fontWeight: pw.FontWeight.bold, fontSize: 15),
+                              'Name:',
+                              maxLines: 2,
+                              style: pw.TextStyle(font: ttf, fontSize: 15),
                             ),
-                            pw.SizedBox(
-                                width:
-                                    5), // Add some spacing between key and value
-                            pw.Text(
-                              widget.studentName,
-                              style: const pw.TextStyle(fontSize: 15),
-                            ),
+                            pw.SizedBox(width: 5),
+                            pw.Flexible(
+                              child: pw.Text(
+                                widget.studentName,
+                                maxLines: 2,
+                                style: pw.TextStyle(fontSize: 15, font: ttf1),
+                              ),
+                            )
                           ],
                         ),
                         pw.Row(
                           children: [
                             pw.Text(
                               'Phone:',
-                              style: pw.TextStyle(
-                                  fontWeight: pw.FontWeight.bold, fontSize: 15),
+                              style: pw.TextStyle(font: ttf, fontSize: 15),
                             ),
-                            pw.SizedBox(
-                                width:
-                                    5), // Add some spacing between key and value
+                            pw.SizedBox(width: 5),
                             pw.Text(
                               widget.phone,
-                              style: const pw.TextStyle(fontSize: 15),
+                              style: pw.TextStyle(fontSize: 14, font: ttf1),
                             ),
                           ],
                         ),
@@ -475,31 +567,31 @@ Traning Program''',
                           children: [
                             pw.Text(
                               'Email:',
-                              style: pw.TextStyle(
-                                  fontWeight: pw.FontWeight.bold, fontSize: 15),
+                              maxLines: 2,
+                              style: pw.TextStyle(font: ttf, fontSize: 15),
                             ),
-                            pw.SizedBox(
-                                width:
-                                    5), // Add some spacing between key and value
-                            pw.Text(
-                              widget.email,
-                              style: const pw.TextStyle(fontSize: 15),
-                            ),
+                            pw.SizedBox(width: 5),
+                            pw.Flexible(
+                              child: pw.Text(
+                                widget.email,
+                                maxLines: 2,
+                                style: pw.TextStyle(fontSize: 15, font: ttf1),
+                              ),
+                            )
                           ],
                         ),
                         pw.Row(
                           children: [
                             pw.Text(
-                              'Address:',
-                              style: pw.TextStyle(
-                                  fontWeight: pw.FontWeight.bold, fontSize: 15),
+                              'Add:',
+                              maxLines: 3,
+                              style: pw.TextStyle(font: ttf, fontSize: 15),
                             ),
-                            pw.SizedBox(
-                                width:
-                                    5), // Add some spacing between key and value
+                            pw.SizedBox(width: 5),
                             pw.Text(
                               widget.address,
-                              style: const pw.TextStyle(fontSize: 15),
+                              maxLines: 3,
+                              style: pw.TextStyle(fontSize: 15, font: ttf1),
                             ),
                           ],
                         )
@@ -509,52 +601,52 @@ Traning Program''',
                 ],
               ),
             ),
-            pw.Row(children: [
-              pw.Container(
-                color: PdfColors.black,
-                height: 50,
-                width: 600,
-                child: pw.Row(
-                  mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
-                  children: [
-                    pw.Padding(
-                      padding: const pw.EdgeInsets.only(left: 30),
-                      child: pw.Text('Description:',
-                          style: const pw.TextStyle(color: PdfColors.white)),
+            pw.Container(
+              color: PdfColors.black,
+              height: 50,
+              width: 600,
+              child: pw.Row(
+                mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
+                children: [
+                  pw.Padding(
+                    padding: const pw.EdgeInsets.only(left: 30),
+                    child: pw.Text('Description:',
+                        style:
+                            pw.TextStyle(color: PdfColors.white, font: ttf1)),
+                  ),
+                  pw.Padding(
+                    padding: const pw.EdgeInsets.only(right: 90),
+                    child: pw.Text(
+                      'Amt:',
+                      style: pw.TextStyle(color: PdfColors.white, font: ttf1),
                     ),
-                    pw.Padding(
-                      padding: const pw.EdgeInsets.only(right: 80),
-                      child: pw.Text(
-                        'Amt:',
-                        style: const pw.TextStyle(color: PdfColors.white),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ]),
+            ),
             pw.Padding(
               padding: const pw.EdgeInsets.only(right: 20, left: 30),
               child: pw.Row(
-                mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: pw.CrossAxisAlignment.start,
                 children: [
-                  pw.Column(
-                    children: [
-                      pw.Padding(
-                        padding: const pw.EdgeInsets.only(top: 20),
-                        child: pw.Text(
-                          '''Flutter App Devlopment
+                  pw.Expanded(
+                    child: pw.Column(
+                      crossAxisAlignment: pw.CrossAxisAlignment.start,
+                      children: [
+                        pw.Padding(
+                          padding: const pw.EdgeInsets.only(top: 20),
+                          child: pw.Text(
+                            '''Flutter App Devlopment
 Traning Program''',
-                          style: const pw.TextStyle(
-                            color: PdfColors.black,
+                            style: pw.TextStyle(
+                                color: PdfColors.black, font: ttf1),
                           ),
-                        ),
-                      ),
-                    ],
+                        )
+                      ],
+                    ),
                   ),
                   pw.Padding(
-                    padding: const pw.EdgeInsets.only(left: 220),
+                    padding: const pw.EdgeInsets.only(left: 200),
                     child: pw.Column(
                       children: [
                         pw.Container(
@@ -565,14 +657,19 @@ Traning Program''',
                       ],
                     ),
                   ),
-                  pw.Column(
-                    children: [
-                      pw.Padding(
-                        padding: const pw.EdgeInsets.only(right: 52, top: 20),
-                        child: pw.Text(widget.amount),
-                      ),
-                    ],
-                  ),
+                  pw.Expanded(
+                    child: pw.Column(
+                      children: [
+                        pw.Padding(
+                          padding: const pw.EdgeInsets.only(
+                              left: 30, top: 20, right: 20),
+                          child: pw.Text(
+                            widget.amount,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
@@ -585,21 +682,29 @@ Traning Program''',
               color: PdfColors.black,
               thickness: 2,
               endIndent: 50,
-              indent: 320,
+              indent: 300,
             ),
             pw.Row(
               mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
               children: [
                 pw.Padding(
-                  padding: const pw.EdgeInsets.only(left: 360),
-                  child: pw.Text('Total',
-                      style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
+                  padding: const pw.EdgeInsets.only(left: 325),
+                  child: pw.Text(
+                    'Total',
+                    style: const pw.TextStyle(),
+                  ),
                 ),
-                pw.Padding(
-                  padding: const pw.EdgeInsets.only(right: 80),
-                  child: pw.Text(widget.amount.toString(),
-                      style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
-                ),
+                pw.SizedBox(width: 80),
+                pw.Expanded(
+                    child: pw.Column(children: [
+                  pw.Padding(
+                    padding: const pw.EdgeInsets.only(right: 30),
+                    child: pw.Text(widget.amount.toString(),
+                        style: const pw.TextStyle(
+                            //font: ttf,
+                            )),
+                  ),
+                ]))
               ],
             ),
             pw.SizedBox(height: 50),
@@ -614,15 +719,14 @@ Traning Program''',
                   width: 15,
                 ),
                 pw.SizedBox(width: 5),
-                pw.Text('88 66 44 00 25'),
+                pw.Text('88 66 44 00 25', style: pw.TextStyle(font: ttf1)),
                 pw.Spacer(),
                 pw.Padding(
                   padding: const pw.EdgeInsets.only(
                     right: 25,
                   ),
                   child: pw.Text('Fibtion',
-                      style: pw.TextStyle(
-                          fontWeight: pw.FontWeight.bold, fontSize: 15)),
+                      style: pw.TextStyle(font: ttf, fontSize: 15)),
                 ),
               ]),
             ),
@@ -638,7 +742,8 @@ Traning Program''',
                     width: 12,
                   ),
                   pw.SizedBox(width: 6),
-                  pw.Text('''fibtion@gmail.com'''),
+                  pw.Text('''fibtion@gmail.com''',
+                      style: pw.TextStyle(font: ttf1, fontSize: 13)),
                   pw.Spacer(),
                   pw.Padding(
                     padding: const pw.EdgeInsets.only(right: 30, top: 15),
@@ -671,12 +776,14 @@ Traning Program''',
                     width: 18,
                   ),
                   pw.Text(
-                      ' 112-113, Times Shoppers,\n Sarthana Jakatnaka, Surat'),
+                    ' 112-113, Times Shoppers,\n Sarthana Jakatnaka, Surat',
+                    style: pw.TextStyle(fontSize: 12, font: ttf1),
+                  ),
                   pw.Spacer(),
                   pw.Padding(
                     padding: const pw.EdgeInsets.only(top: 15),
                     child: pw.Text('(Ruchit Mavani)',
-                        style: const pw.TextStyle(fontSize: 15)),
+                        style: pw.TextStyle(font: ttf2, fontSize: 15)),
                   ),
                 ],
               ),
